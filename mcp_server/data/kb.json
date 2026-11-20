@@ -1,0 +1,32 @@
+[
+  {
+    "id": "KB-001",
+    "title": "VPN Connectivity After Password Change",
+    "keywords": ["vpn", "globalprotect", "password", "authentication", "failed", "connecting"],
+    "content": "If VPN authentication fails after an Active Directory password change, follow these steps: 1) Disconnect and reconnect GlobalProtect. 2) When prompted, enter your new AD password — not the old one. 3) If you receive a 'certificate error', restart the GlobalProtect service (Windows: services.msc → GlobalProtect → Restart). 4) If the issue persists, lock your workstation, unlock it with the new password to sync credentials, then retry VPN. 5) Still failing: raise a ticket for a manual cache flush by the helpdesk team. Expected resolution time: same day."
+  },
+  {
+    "id": "KB-002",
+    "title": "Software Installation Policy and Request Process",
+    "keywords": ["software", "install", "application", "request", "slack", "teams", "app"],
+    "content": "All software installations on company devices require prior approval. Standard applications (Slack, Zoom, Teams, browsers) are approved by default and can be installed via the Self-Service portal (IT Portal → Software Catalogue). Non-standard applications require a manager approval form (IT Portal → Requests → Software Approval). The IT team deploys approved software remotely — do not attempt manual installation on managed devices. Standard installs are typically completed within 1 business day."
+  },
+  {
+    "id": "KB-003",
+    "title": "Hardware Failure and Replacement Process",
+    "keywords": ["hardware", "laptop", "boot", "blue screen", "bsod", "won't start", "replacement", "loaner"],
+    "content": "For a device that won't boot or shows a blue screen: 1) Note the error code if visible. 2) For critical/urgent cases (management, presentations), call the IT hotline immediately (+XX XXX XXX XXXX) — do not wait for ticket resolution. 3) A loaner device can be collected from the IT office (Floor 1, Room 1.04) with a valid employee badge. 4) For BSOD, the technician will run diagnostics; common causes are driver conflicts or failing storage. 5) Data recovery is attempted before hardware replacement. Keep devices powered off until a technician can assess."
+  },
+  {
+    "id": "KB-004",
+    "title": "Network and Printer Connectivity Troubleshooting",
+    "keywords": ["network", "printer", "offline", "not connecting", "ethernet", "wifi", "slow"],
+    "content": "For printer showing 'offline': 1) Check the printer's physical power and paper/toner status. 2) On Windows: Devices & Printers → right-click → See what's printing → Printer menu → uncheck 'Use Printer Offline'. 3) If the printer IP is unreachable (ping test), the printer may need a reboot or the network port may be down — contact helpdesk with the printer's IP and location. For general slow network: check if the issue is Wi-Fi specific (try ethernet). If multiple users are affected, it is likely an infrastructure issue — escalate to network team immediately."
+  },
+  {
+    "id": "KB-005",
+    "title": "Email Sync Issues in Outlook",
+    "keywords": ["email", "outlook", "sync", "inbox", "updating", "not receiving", "stuck"],
+    "content": "If Outlook is stuck on 'Updating Inbox': 1) Check your internet/VPN connection first. 2) Switch Outlook to online mode if it shows 'Working Offline' in the status bar. 3) Try Send/Receive All (F9). 4) If persisting over 30 minutes, restart Outlook. 5) If the issue remains, run Outlook in safe mode (outlook.exe /safe) to rule out add-in conflicts. 6) As a last resort, delete the OST cache file (close Outlook → %localappdata%\\Microsoft\\Outlook → delete .ost → reopen). Re-sync may take 20–60 minutes depending on mailbox size."
+  }
+]

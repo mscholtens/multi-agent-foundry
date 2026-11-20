@@ -1,0 +1,47 @@
+[
+  {
+    "id": "TKT-2024-001",
+    "submitter": "Sarah Chen",
+    "email": "s.chen@company.example",
+    "asset_tag": "LT-3821",
+    "subject": "VPN not connecting after password change",
+    "priority_requested": "medium",
+    "body": "Since changing my Active Directory password yesterday afternoon, my VPN client (GlobalProtect) keeps failing with an 'authentication failed' error. I've tried restarting my laptop and re-entering my credentials several times. I'm working from home today and this is completely blocking my access to internal systems. I've been unable to work since 8am. Please help as soon as possible."
+  },
+  {
+    "id": "TKT-2024-002",
+    "submitter": "James Miller",
+    "email": "j.miller@company.example",
+    "asset_tag": "LT-4892",
+    "subject": "Please install Slack on my work laptop",
+    "priority_requested": "low",
+    "body": "Hi IT team, could you please install the Slack desktop application on my work laptop (asset tag LT-4892)? Our new project team uses Slack for all communication and I need it set up before the sprint kick-off on Monday morning. Happy to be available for a remote session if needed. Thank you."
+  },
+  {
+    "id": "TKT-2024-003",
+    "submitter": "Bob",
+    "email": "bob@company.example",
+    "asset_tag": "",
+    "subject": "Computer not working",
+    "priority_requested": "",
+    "body": "Hi, my computer is broken and not working properly since this morning. It's very slow and sometimes shows errors. I need it fixed ASAP. It's really annoying and I can't do my work properly. Please send someone."
+  },
+  {
+    "id": "TKT-2024-004",
+    "submitter": "Emma Watts (PA to CEO)",
+    "email": "e.watts@company.example",
+    "asset_tag": "LT-0001",
+    "subject": "URGENT - CEO laptop won't boot - board meeting in 90 minutes",
+    "priority_requested": "critical",
+    "body": "URGENT - Marcus Thompson's laptop (asset tag LT-0001) is showing a blue screen on startup and will not boot. He has a board presentation in 90 minutes and all materials are on the device. We need either immediate on-site support or a loaner laptop configured ASAP. Marcus is on Floor 5, office 5.01. Please treat this as top priority."
+  },
+  {
+    "id": "TKT-2024-005",
+    "submitter": "Lisa Rodriguez",
+    "email": "l.rodriguez@company.example",
+    "asset_tag": "DT-2204",
+    "subject": "Multiple issues: slow PC, printer offline, Outlook not syncing",
+    "priority_requested": "medium",
+    "body": "I'm having three separate issues that all started around 9am today:\n\n1. My PC (DT-2204) is extremely slow - taking over 5 minutes to boot and applications are unresponsive.\n2. The shared printer on Floor 3 near the kitchen (HP LaserJet, IP 192.168.1.45) is showing as 'offline' for everyone on the floor, not just me.\n3. My Outlook has been stuck on 'Updating Inbox' for over 2 hours. I'm not receiving any emails.\n\nI'm not sure if these are related. Please advise."
+  }
+]

@@ -1,0 +1,20 @@
+azure:
+  subscription_id: "PLACEHOLDER"
+  tenant_id: "PLACEHOLDER"
+  region: "swedencentral"
+  # Optional: service principal credentials for non-interactive auth.
+  # Leave as PLACEHOLDER (or omit) to use az login interactive flow instead.
+  client_id: "PLACEHOLDER"
+  client_secret: "PLACEHOLDER"
+
+foundry:
+  resource_name: "PLACEHOLDER"
+  endpoint: "PLACEHOLDER"
+  project_endpoint: "PLACEHOLDER"
+  api_key: "PLACEHOLDER"
+  gpt_deployment: "PLACEHOLDER"
+  claude_deployment: "PLACEHOLDER"
+
+mcp:
+  url: "PLACEHOLDER"
+  api_key: "PLACEHOLDER"

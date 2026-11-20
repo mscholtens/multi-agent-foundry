@@ -1,0 +1,158 @@
+<title>multi-agent-foundry</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --bg: #F3F5F9;
+    --fg: #111827;
+    --fg-muted: #6B7280;
+    --border: #D1D5DB;
+    --box-bg: #FFFFFF;
+    --local-fill: #EBF0FB;
+    --local-stroke: #3B6ED4;
+    --foundry-fill: #FEF6ED;
+    --foundry-stroke: #C2600A;
+    --mcp-fill: #EDFAF5;
+    --mcp-stroke: #0A8C6A;
+    --arrow: #9CA3AF;
+    --label: #374151;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0D1117; --fg: #E6EDF3; --fg-muted: #8B949E;
+      --border: #30363D; --box-bg: #161B22;
+      --local-fill: #111928; --local-stroke: #7B9EF0;
+      --foundry-fill: #1C1208; --foundry-stroke: #F0924E;
+      --mcp-fill: #091C14; --mcp-stroke: #3DD68C;
+      --arrow: #4B5563; --label: #C9D1D9;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0D1117; --fg: #E6EDF3; --fg-muted: #8B949E;
+    --border: #30363D; --box-bg: #161B22;
+    --local-fill: #111928; --local-stroke: #7B9EF0;
+    --foundry-fill: #1C1208; --foundry-stroke: #F0924E;
+    --mcp-fill: #091C14; --mcp-stroke: #3DD68C;
+    --arrow: #4B5563; --label: #C9D1D9;
+    color-scheme: dark;
+  }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font-family: 'Inter', system-ui, sans-serif;
+    padding-block: 32px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    display: flex; flex-direction: column; align-items: center;
+  }
+  figure { margin: 0; width: 100%; max-width: 1060px; }
+  figure svg { width: 100%; height: auto; display: block; }
+  figcaption {
+    margin-top: 14px; font-size: 12.5px; color: var(--fg-muted);
+    text-align: center; line-height: 1.65; max-width: 720px; margin-inline: auto;
+  }
+  code { font-family: 'SFMono-Regular', Consolas, monospace; font-size: 11px; }
+</style>
+
+<figure>
+<svg viewBox="0 0 1060 455" role="img"
+  aria-label="Architecture: LangGraph coordinator (local) routes tickets through GPT Triage and Claude Responder agents on Microsoft Foundry; the coordinator proxies all MCP tool calls to a FastMCP server on Azure Container Apps."
+  style="font-family:'Inter',system-ui,sans-serif;">
+  <defs>
+    <marker id="a" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto">
+      <polygon points="0,0 8,4 0,8" fill="var(--arrow)"/>
+    </marker>
+  </defs>
+
+  <!-- ── Zone backgrounds ── -->
+  <rect x="5"   y="48" width="252" height="390" rx="7" fill="var(--local-fill)"   stroke="var(--local-stroke)"   stroke-width="1" stroke-opacity=".3"/>
+  <rect x="292" y="48" width="270" height="390" rx="7" fill="var(--foundry-fill)" stroke="var(--foundry-stroke)" stroke-width="1" stroke-opacity=".3"/>
+  <rect x="596" y="48" width="458" height="390" rx="7" fill="var(--mcp-fill)"     stroke="var(--mcp-stroke)"     stroke-width="1" stroke-opacity=".3"/>
+
+  <!-- ── Zone labels ── -->
+  <text x="131" y="66" text-anchor="middle" font-size="8.5" font-weight="600" letter-spacing="2"   fill="var(--local-stroke)">LOCAL</text>
+  <text x="427" y="66" text-anchor="middle" font-size="8.5" font-weight="600" letter-spacing="1.6" fill="var(--foundry-stroke)">MICROSOFT FOUNDRY</text>
+  <text x="825" y="66" text-anchor="middle" font-size="8.5" font-weight="600" letter-spacing="1.6" fill="var(--mcp-stroke)">AZURE CONTAINER APPS</text>
+
+  <!-- ── PDF Tickets ── -->
+  <rect x="50" y="82" width="160" height="52" rx="5" fill="var(--box-bg)" stroke="var(--border)" stroke-width="1.5"/>
+  <text x="130" y="104" text-anchor="middle" font-size="12" font-weight="600" fill="var(--fg)">PDF Tickets</text>
+  <text x="130" y="121" text-anchor="middle" font-size="9.5" fill="var(--fg-muted)">tickets/ directory</text>
+
+  <!-- PDF → Coordinator -->
+  <line x1="130" y1="134" x2="130" y2="184" stroke="var(--arrow)" stroke-width="1.5" marker-end="url(#a)"/>
+  <text x="136" y="162" font-size="9" fill="var(--label)">ticket text</text>
+
+  <!-- ── LangGraph Coordinator ── -->
+  <rect x="20" y="188" width="220" height="192" rx="5" fill="var(--box-bg)" stroke="var(--local-stroke)" stroke-width="1.5"/>
+  <text x="130" y="210" text-anchor="middle" font-size="12" font-weight="600" fill="var(--fg)">LangGraph Coordinator</text>
+  <text x="130" y="226" text-anchor="middle" font-size="9.5" fill="var(--local-stroke)">MCP client · local · Python 3.11</text>
+  <line x1="30" y1="236" x2="230" y2="236" stroke="var(--border)" stroke-width=".75"/>
+  <text x="130" y="254" text-anchor="middle" font-size="9.5" fill="var(--fg-muted)">1  get_ticket</text>
+  <text x="130" y="271" text-anchor="middle" font-size="9.5" fill="var(--fg-muted)">2  triage</text>
+  <text x="130" y="288" text-anchor="middle" font-size="9.5" fill="var(--fg-muted)">3  route on needs_kb</text>
+  <text x="130" y="305" text-anchor="middle" font-size="9.5" fill="var(--fg-muted)">4  respond</text>
+  <text x="130" y="322" text-anchor="middle" font-size="9.5" fill="var(--fg-muted)">5  save_result</text>
+  <line x1="30" y1="334" x2="230" y2="334" stroke="var(--border)" stroke-width=".75"/>
+  <text x="130" y="352" text-anchor="middle" font-size="9.5" fill="var(--fg-muted)">validates + retries</text>
+  <text x="130" y="368" text-anchor="middle" font-size="9.5" fill="var(--fg-muted)">on bad JSON</text>
+
+  <!-- ── Triage Agent ── -->
+  <rect x="304" y="90" width="246" height="84" rx="5" fill="var(--box-bg)" stroke="var(--foundry-stroke)" stroke-width="1.5"/>
+  <text x="427" y="113" text-anchor="middle" font-size="12" font-weight="600" fill="var(--fg)">Triage Agent</text>
+  <text x="427" y="130" text-anchor="middle" font-size="9.5" fill="var(--foundry-stroke)">GPT-4o-mini · Foundry Agent Service</text>
+  <text x="427" y="147" text-anchor="middle" font-size="9.5" fill="var(--fg-muted)">DefaultAzureCredential · ephemeral</text>
+  <text x="427" y="163" text-anchor="middle" font-size="9.5" fill="var(--fg-muted)">→ category · priority · needs_kb · kb_topic</text>
+
+  <!-- ── Responder Agent ── -->
+  <rect x="304" y="300" width="246" height="84" rx="5" fill="var(--box-bg)" stroke="var(--foundry-stroke)" stroke-width="1.5"/>
+  <text x="427" y="323" text-anchor="middle" font-size="12" font-weight="600" fill="var(--fg)">Responder Agent</text>
+  <text x="427" y="340" text-anchor="middle" font-size="9.5" fill="var(--foundry-stroke)">Claude Haiku · Foundry endpoint</text>
+  <text x="427" y="357" text-anchor="middle" font-size="9.5" fill="var(--fg-muted)">API key · returns tool_use blocks</text>
+  <text x="427" y="374" text-anchor="middle" font-size="9.5" fill="var(--fg-muted)">→ reply · kb_used</text>
+
+  <!-- ── MCP Server ── -->
+  <rect x="610" y="106" width="438" height="230" rx="5" fill="var(--box-bg)" stroke="var(--mcp-stroke)" stroke-width="1.5"/>
+  <text x="829" y="128" text-anchor="middle" font-size="12" font-weight="600" fill="var(--fg)">MCP Server</text>
+  <text x="829" y="145" text-anchor="middle" font-size="9.5" fill="var(--mcp-stroke)">FastMCP · streamable HTTP · /mcp · port 8000</text>
+  <line x1="620" y1="155" x2="1040" y2="155" stroke="var(--border)" stroke-width=".75"/>
+  <text x="622" y="174" font-size="10.5" font-weight="500" fill="var(--fg)">get_ticket(ticket_id)</text>
+  <text x="622" y="189" font-size="9.5" fill="var(--fg-muted)">returns ticket JSON by ID</text>
+  <text x="622" y="210" font-size="10.5" font-weight="500" fill="var(--fg)">lookup_kb(topic)</text>
+  <text x="622" y="225" font-size="9.5" fill="var(--fg-muted)">keyword match → best KB article</text>
+  <text x="622" y="246" font-size="10.5" font-weight="500" fill="var(--fg)">save_result(ticket_id, payload)</text>
+  <text x="622" y="261" font-size="9.5" fill="var(--fg-muted)">stores resolution in process memory</text>
+  <line x1="620" y1="272" x2="1040" y2="272" stroke="var(--border)" stroke-width=".75"/>
+  <text x="829" y="289" text-anchor="middle" font-size="9.5" fill="var(--fg-muted)">auth: x-api-key header</text>
+  <text x="829" y="307" text-anchor="middle" font-size="9.5" fill="var(--fg-muted)">data: tickets.json · kb.json (static)</text>
+
+  <!-- ── Arrows: Coordinator ↔ Triage ── -->
+  <!-- Out: right of Coordinator y=218 → bend at x=275 → left of Triage y=132 -->
+  <path d="M 240,218 C 275,218 275,132 304,132" fill="none" stroke="var(--arrow)" stroke-width="1.5" marker-end="url(#a)"/>
+  <text x="244" y="214" font-size="9" fill="var(--label)">classify</text>
+
+  <!-- Return: left of Triage y=154 → bend at x=275 → right of Coordinator y=264 -->
+  <path d="M 304,154 C 275,154 275,264 240,264" fill="none" stroke="var(--arrow)" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#a)"/>
+  <text x="244" y="278" font-size="9" fill="var(--label)">classification</text>
+
+  <!-- ── Arrows: Coordinator ↔ Responder ── -->
+  <!-- Out: right of Coordinator y=312 → bend at x=275 → left of Responder y=340 -->
+  <path d="M 240,312 C 275,312 275,340 304,340" fill="none" stroke="var(--arrow)" stroke-width="1.5" marker-end="url(#a)"/>
+  <text x="244" y="308" font-size="9" fill="var(--label)">respond</text>
+  <text x="244" y="321" font-size="8" fill="var(--label)" font-style="italic">if needs_kb → with kb_topic</text>
+
+  <!-- Return: left of Responder y=364 → bend at x=275 → right of Coordinator y=350 -->
+  <path d="M 304,364 C 275,364 275,350 240,350" fill="none" stroke="var(--arrow)" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#a)"/>
+  <text x="244" y="382" font-size="9" fill="var(--label)">reply JSON</text>
+
+  <!-- ── Arrow: Coordinator → MCP (all tools, bottom route) ── -->
+  <!-- Bottom of Coordinator → down to y=432 → right to x=829 → up to MCP bottom y=336 -->
+  <path d="M 130,380 L 130,432 L 829,432 L 829,336" fill="none" stroke="var(--arrow)" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#a)"/>
+  <text x="480" y="425" text-anchor="middle" font-size="9" fill="var(--label)">get_ticket · lookup_kb · save_result</text>
+  <text x="480" y="447" text-anchor="middle" font-size="8" fill="var(--fg-muted)" font-style="italic">(Responder returns tool_use blocks; coordinator proxies lookup_kb here)</text>
+
+</svg>
+<figcaption>
+  The coordinator orchestrates a fixed sequence: it fetches the ticket via <code>get_ticket</code>, sends it to the Triage agent (GPT) for JSON classification, then — if <code>needs_kb</code> is true — calls the Responder (Claude) which returns <code>tool_use</code> blocks; the coordinator executes them against the MCP server and feeds the results back. The coordinator saves the final result via <code>save_result</code>. All three tools live on the same MCP server. Dashed arrows are responses.
+</figcaption>
+</figure>
